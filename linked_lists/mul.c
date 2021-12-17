@@ -13,13 +13,14 @@ void mul(int n)
                 temp2=temp2->next;
 
         }*/
-        while (temp1!=null)
+        do
         {
-                while (temp2!=null)
+                temp2=head2;
+                while (temp2!=NULL)
                 {
                         printf("%d X ^ %d",temp1->quot*temp2->quot,temp1->deg+temp2->deg);
                         temp2=temp2->next;
                 }
                 temp1=temp1->next;
-        }
+        }while (temp1!=NULL);
 }
