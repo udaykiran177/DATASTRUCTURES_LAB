@@ -125,6 +125,7 @@ void main()
 {
         int n;
         printf("enter the no of terms:");
+        scanf("%d",&n);
         create1(n);
         create();
         disp();
