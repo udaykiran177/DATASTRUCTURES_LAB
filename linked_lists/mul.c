@@ -11,8 +11,11 @@ struct pol* head2=NULL;
 struct pol* tail2=NULL;
 struct pol* head3=NULL;
 struct pol* tail3=NULL;
-void create1(int n){
-        int q,d,i=0;
+struct node* create1(struct node* head)
+{
+        int q,d,i=0,n;
+        printf("enter the no of terms:");
+        scanf("%d",&n);
         while (i<n){
         newnode=(struct pol*)malloc(sizeof(struct pol));
         scanf("%d%d",&q,&d);
@@ -34,72 +37,33 @@ void create1(int n){
 
 }
 
-void create2(int n)
-{
-        int q,d,i=0,n1;
-        printf("enter the no of terms fo pol-2");
-        scanf("%d",&n1);
-        while (i<n)
-        {
-                newnode=(struct pol*)malloc(sizeof(struct pol));
-                scanf("%d%d",&q,&d);
-                newnode->quot=q;
-                newnode->deg=d;
-                newnode->next=NULL;
-                if (head2==NULL)
-                {
-                        head2=newnode;
-                        tail2=newnode;
-                }
-                else
-                {
-                        tail2->next=newnode;
-                        tail2=newnode;
-                }
-                i++;
-        }
-}
 
-void disp(){
+void disp(struct node* head){
         temp1=head1;
         temp2=head2;
-        while (temp1!=NULL)
+        while (temp1->next!=NULL)
         {
-                printf("%dX^%d+",temp1->quot,temp1->deg);
+                printf("(%db X^ %d) +",temp1->quot,temp1->deg);
                 temp1=temp1->next;
         }
-        printf("\n \n");
-        while(temp2!=NULL)
-        {
-                printf("%dX^%d+",temp2->quot,temp2->deg);
-                temp2=temp2->next;
-        }
+        printf("(%d X^ %d)",temp1->quot,temp1->deg);
+        
 }
 
 
-void mul(int n)
+void mul()
 {
         temp1=head1;
         temp2=head2;
-        /*while(temp1&&temp2)
-        {
-
-                for (int i=0;i<n;i++)
-                {
-                        printf("%d x ^ %d",temp1->quot*temp2->quot,temp1->deg+temp2-deg);
-                        temp1=temp1->next;
-                }
-                temp2=temp2->next;
-
-        }*/
          do
         {
                 temp2=head2;
                 while (temp2!=NULL)
                 {
                         newnode=(struct pol*)malloc(sizeof(struct pol));
-                        printf("(%d X ^ %d)+",(temp1->quot)*(temp2->quot),(temp1->deg)+(temp2->deg));
-
+                        //printf("(%d X ^ %d)+",(temp1->quot)*(temp2->quot),(temp1->deg)+(temp2->deg));
+                        newnode->quot=temp1->quot*temp->quot;
+                        newnode->deg=tenp1->deg+temp2->deg;
                         if (head3==NULL)
                         {
                                 head3=newnode;
@@ -113,4 +77,15 @@ void mul(int n)
                 }
                 temp1=temp1->next;
         }while(temp1!=NULL);
+}
+
+
+void main()
+{
+        head1=create(head1);
+        head2=create(head2);
+        display(head1);
+        display(head2);
+        mul();
+        display(head3);
 }
