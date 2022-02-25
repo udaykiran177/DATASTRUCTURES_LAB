@@ -1,5 +1,6 @@
 #include<stdio.h>
-int a[10],c=0,n,front=0,rear=0;
+
+int a[10],c=0,n=10,front=0,rear=0;
 
 void insert_rear(int item){
         if (c==10){
@@ -7,7 +8,8 @@ void insert_rear(int item){
         }
         else{
                 a[rear]=item;
-                rear=(rear+1)%n;
+                printf("in the fun %d",a[rear]);
+                rear=(rear+1)%10;
                 c++;
         }
 }
@@ -18,16 +20,17 @@ void insert_front(int item){
         }
         else{
                 if (front==0){
-                        //printf("can't perform front insertion as you reach the end");
+                        //printf("can't perform front insertion as you have reached the end");
                         front=n-1;
                         a[front]=item;
+                        
                 }
                 /*a[--front]=item;
                 c++;*/
                 else{
                         a[--front]=item;
                 }
-
+                c++;
         }
 }
 
@@ -36,7 +39,7 @@ void del_front(){
                 printf("queue is empty");
         }
         else{
-                front=(front+1)%n;
+                front=(front+1)%10;
                 c--;
         }
 }
@@ -56,18 +59,20 @@ void del_rear(){
 }
 
 void disp(){
-        int temp=front;
-        while(temp!=rear){
+        int temp=front,i=0;
+        //printf("rear= %d",rear);
+        while(i<c){
                 printf("%d\n",a[temp]);
-                temp=(temp+1)%n;
+                temp=(temp+1)%10;
+                i++;
         }
 }
 
 int main(){
-        int item;
+        int item,n1;
         printf("enter the no of elements:");
-        scanf("%d",&n);
-        for (int i=0;i<n;i++){
+        scanf("%d",&n1);
+        for (int i=0;i<n1;i++){
                 printf("enter the element:");
                 scanf("%d",&item);
                 insert_rear(item);
